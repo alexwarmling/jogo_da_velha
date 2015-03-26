@@ -1,0 +1,15 @@
+1º Pagina em branco.
+Issue			Nome de referencia para o CSS
+Solution		de veia.css para tic_tac_toe.css
+	
+2º Ao Clicar nada acontece.
+Issue			Nome de referencia para o JS
+Solution		de veia.js	para tic_tac_toe.js
+	
+3º Ao vencer o nome do Jogador vencedor estava incorreto.
+Issue			Troca de valor de variavel antes de verificar vencedor.
+Solution		Verifica o vencedor e so entao troca o valor da variavel.
+
+4º Ao utilizar o Mozila Firefox o jogo acusava o Jogador X como vencedor.
+Issue			Incompatibilidade com o "innerText".
+Solution		de "innerText" para "textContent"
