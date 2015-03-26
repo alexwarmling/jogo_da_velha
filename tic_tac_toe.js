@@ -1,61 +1,71 @@
-letra = "X";
+var player = "X";
+var board = new Array();
+
+function initialize(){
+  board[0] = document.getElementById('c11').textContent;
+  board[1] = document.getElementById('c12').textContent;
+  board[2] = document.getElementById('c13').textContent;
+  board[3] = document.getElementById('c21').textContent;
+  board[4] = document.getElementById('c22').textContent;
+  board[5] = document.getElementById('c23').textContent;
+  board[6] = document.getElementById('c31').textContent;
+  board[7] = document.getElementById('c32').textContent;
+  board[8] = document.getElementById('c33').textContent;
+}
 
 function jogada(celula){
-
-  var celulaclicada = document.getElementById(celula).innerText;
-
+  var celulaclicada = document.getElementById(celula).textContent;
   if (celulaclicada == "X" || celulaclicada == "O"){
     alert("Opa, este quadrado já foi escolhido!");
   }
   else{
-    document.getElementById(celula).innerText = letra;
-    if (letra == "X"){
-      letra = "O";
+    document.getElementById(celula).textContent = player;
+    initialize();
+    if(getWinner()){
+      alert(msg);
+      window.location.reload();
+    }
+
+    if (player == "X"){
+      player = "O";
     }else{
-      letra = "X";
-    }
-    verif();
-  }
-}
-
-function verif(){
-  var ce11 = document.getElementById('c11').innerText;
-  var ce12 = document.getElementById('c12').innerText;
-  var ce13 = document.getElementById('c13').innerText;
-  var ce21 = document.getElementById('c21').innerText;
-  var ce22 = document.getElementById('c22').innerText;
-  var ce23 = document.getElementById('c23').innerText;
-  var ce31 = document.getElementById('c31').innerText;
-  var ce32 = document.getElementById('c32').innerText;
-  var ce33 = document.getElementById('c33').innerText;
-
-  if (((ce11 !== '') && (ce12 !== '') && (ce13 !== '') && (ce11 == ce12) && (ce12 == ce13)) ||
-    ((ce11 !== '') && (ce22 !== '') && (ce33 !== '') && (ce11 == ce22) && (ce22 == ce33)) ||
-    ((ce11 !== '') && (ce21 !== '') && (ce31 !== '') && (ce11 == ce21) && (ce21 == ce31)) ||
-    ((ce21 !== '') && (ce22 !== '') && (ce23 !== '') && (ce21 == ce22) && (ce22 == ce23)) ||
-    ((ce31 !== '') && (ce32 !== '') && (ce33 !== '') && (ce31 == ce32) && (ce32 == ce33)) ||
-    ((ce12 !== '') && (ce22 !== '') && (ce32 !== '') && (ce12 == ce22) && (ce22 == ce32)) ||
-    ((ce13 !== '') && (ce23 !== '') && (ce33 !== '') && (ce13 == ce23) && (ce23 == ce33)) ||
-    ((ce31 !== '') && (ce22 !== '') && (ce13 !== '') && (ce31 == ce22) && (ce22 == ce13))){
-      alert("O jogador '" + letra + "' ganhou!!");
-      novo_jogo();
-    }
-  else {
-    if (ce11 != '' && ce12 != '' && ce13 != '' &&
-      ce21 != '' && ce22 != '' && ce23 != '' &&
-      ce31 != '' && ce32 != '' && ce33 != ''){
-        alert('Não houve vencedor!');
-        novo_jogo();
+      player = "X";
     }
   }
 }
 
-function novo_jogo(){
-  for (var i=1; i<=3; i++){
-    for (var j=1; j<=3; j++){
-      nomecelula = 'c' + i + j
-      document.getElementById(nomecelula).innerText = '';
+function checkWinner() {
+    return  ((board[0] !== '') && (board[1] !== '') && (board[2] !== '') && (board[0] == board[1]) && (board[1] == board[2])) ||
+            ((board[0] !== '') && (board[4] !== '') && (board[8] !== '') && (board[0] == board[4]) && (board[4] == board[8])) ||
+            ((board[0] !== '') && (board[3] !== '') && (board[6] !== '') && (board[0] == board[3]) && (board[3] == board[6])) ||
+            ((board[3] !== '') && (board[4] !== '') && (board[5] !== '') && (board[3] == board[4]) && (board[4] == board[5])) ||
+            ((board[6] !== '') && (board[7] !== '') && (board[8] !== '') && (board[6] == board[7]) && (board[7] == board[8])) ||
+            ((board[1] !== '') && (board[4] !== '') && (board[7] !== '') && (board[1] == board[4]) && (board[4] == board[7])) ||
+            ((board[2] !== '') && (board[5] !== '') && (board[8] !== '') && (board[2] == board[5]) && (board[5] == board[8])) ||
+            ((board[6] !== '') && (board[4] !== '') && (board[2] !== '') && (board[6] == board[4]) && (board[4] == board[2]));
+
+}
+
+function getWinner(){
+  if(checkWinner()){
+    msg = "O jogador '" + player + "' ganhou!!";
+    return true;
+  }
+  if (!availableMoves()) {
+      msg = "Não houve vencedor!";
+    return true;
+  }
+  return false;
+}
+
+function availableMoves() {
+  for (var i = 0; i < board.length; i++){
+    if (board[i] == '') {
+      availableMove = true;
+      break;
+    }else {
+      availableMove = false;
     }
   }
-  letra = "X";
+  return availableMove;
 }
