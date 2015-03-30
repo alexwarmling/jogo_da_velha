@@ -1,24 +1,24 @@
-letra = "X";
+moviment = "X";
 
-function jogada(celula){
+function move(cell){
 
-  var celulaclicada = document.getElementById(celula).innerText;
+  var cellClicked = document.getElementById(cell).innerText;
 
-  if (celulaclicada == "X" || celulaclicada == "O"){
-    alert("Opa, este quadrado já foi escolhido!");
+  if (cellClicked == "X" || cellClicked == "O"){
+    alert("Oops, this box has been selected!");
   }
   else{
-    document.getElementById(celula).innerText = letra;
-    if (letra == "X"){
-      letra = "O";
+    document.getElementById(cell).innerText = moviment;
+    if (moviment == "X"){
+      moviment = "O";
     }else{
-      letra = "X";
+      moviment = "X";
     }
-    verif();
+    getWinner();
   }
 }
 
-function verif(){
+function getWinner(){
   var ce11 = document.getElementById('c11').innerText;
   var ce12 = document.getElementById('c12').innerText;
   var ce13 = document.getElementById('c13').innerText;
@@ -37,25 +37,25 @@ function verif(){
     ((ce12 !== '') && (ce22 !== '') && (ce32 !== '') && (ce12 == ce22) && (ce22 == ce32)) ||
     ((ce13 !== '') && (ce23 !== '') && (ce33 !== '') && (ce13 == ce23) && (ce23 == ce33)) ||
     ((ce31 !== '') && (ce22 !== '') && (ce13 !== '') && (ce31 == ce22) && (ce22 == ce13))){
-      alert("O jogador '" + letra + "' ganhou!!");
-      novo_jogo();
+      alert("The winner is '" + moviment + "'");
+      playAgain();
     }
   else {
     if (ce11 != '' && ce12 != '' && ce13 != '' &&
       ce21 != '' && ce22 != '' && ce23 != '' &&
       ce31 != '' && ce32 != '' && ce33 != ''){
-        alert('Não houve vencedor!');
-        novo_jogo();
+        alert("There wasn't winner");
+        playAgain();
     }
   }
 }
 
-function novo_jogo(){
+function playAgain(){
   for (var i=1; i<=3; i++){
     for (var j=1; j<=3; j++){
-      nomecelula = 'c' + i + j
-      document.getElementById(nomecelula).innerText = '';
+      celName = 'c' + i + j
+      document.getElementById(celName).innerText = '';
     }
   }
-  letra = "X";
+  moviment = "X";
 }
