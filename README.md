@@ -18,6 +18,12 @@ UI Tests are located in ```test/ui``` directory. The tests were written with [Ca
 
 ### Build
 
-The project also uses [CircleCI](https://circleci.com/) as a CI server. Every commit will trigger a new build on CircleCI.
+The project uses [CircleCI](https://circleci.com/) as a CI server. Every commit will trigger a new build on CircleCI.
+
+To build the project manually just run ```npm install``` to install the dependencies and ```npm test``` to run all tests. If you want to run the tests separately:
+
+- The ```grunt``` command will run the unit tests locally. PS: It requires Chrome to run, and if you don't have grunt-cli installed globally, please run ```npm install -g grunt-cli``` also.
+- The ```grunt ci``` will run the unit tests on SauceLabs environments described in ```karma.conf.js```.
+- The ```casperjs test test/ui/tic_tac_toe_uiTest.js``` will run the UI tests.
 
 
