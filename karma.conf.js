@@ -50,7 +50,7 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['dots', 'coverage', 'saucelabs'],
+    reporters: ['progress', 'coverage', 'saucelabs'],
 
 
     // web server port
@@ -70,8 +70,8 @@ module.exports = function(config) {
     autoWatch: true,
 
     sauceLabs: {
-      username: nconf.get('username'),
-      accessKey: nconf.get('accessKey')
+      username: 'stefanteixeira',
+      accessKey: 'abd48324-b1fb-40be-8649-4d991525972a'
     },
 
     customLaunchers: customLaunchers,
