@@ -18,5 +18,6 @@ UI Tests are located in ```test/ui``` directory. The tests were written with [Ca
 
 ### Build
 
-To build the project just run ```npm install``` to install the dependencies and ```npm test``` to run all tests. The project also uses [CircleCI](https://circleci.com/) as a CI server. Every commit will trigger a new build on CircleCI.
+The project also uses [CircleCI](https://circleci.com/) as a CI server. Every commit will trigger a new build on CircleCI.
+
 
