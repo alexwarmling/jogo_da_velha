@@ -1,0 +1,36 @@
+{
+  "name": "tic_tac_toe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt ci && casperjs test test/ui/tic_tac_toe_uiTest.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stefanteixeira/tic_tac_toe.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stefanteixeira/tic_tac_toe/issues"
+  },
+  "homepage": "https://github.com/stefanteixeira/tic_tac_toe",
+  "devDependencies": {
+    "casperjs": "^1.1.0-beta3",
+    "grunt-contrib-jshint": "^0.11.1",
+    "grunt-karma": "^0.10.1",
+    "jasmine-core": "^2.2.0",
+    "karma": "^0.12.31",
+    "karma-chrome-launcher": "^0.1.7",
+    "karma-coverage": "^0.2.7",
+    "karma-jasmine": "^0.3.5",
+    "karma-sauce-launcher": "^0.2.10",
+    "karma-sinon": "^1.0.4",
+    "sinon": "^1.14.1"
+  },
+  "dependencies": {
+    "grunt": "^0.4.5",
+    "nconf": "^0.7.1"
+  }
+}
