@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "grunt ci && casperjs test test/tic_tac_toe_uiTest.js"
+    "test": "grunt ci && casperjs test test/ui/tic_tac_toe_uiTest.js"
   },
   "repository": {
     "type": "git",
